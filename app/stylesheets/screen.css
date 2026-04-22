@@ -1,0 +1,109 @@
+
+/* Layout */
+.screen-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.screen-preload {
+  display: none;
+}
+
+.screen-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.screen-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* Center helper (loading state) */
+.screen-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen-truck-icon {
+  font-size: 6rem;
+  line-height: 1;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Waiting state */
+.screen-waiting {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.screen-waiting-title {
+  color: white;
+  font-size: 2.25rem;
+  font-weight: 700;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+.screen-waiting-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.25rem;
+}
+
+/* Photo bubble — position anchored by JS state, transition applied inline */
+.photo-bubble {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ball wrapper — size only; animation handled by inline JS transition */
+.ball-wrapper {
+  width: var(--ball-size);
+  height: var(--ball-size);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.ball-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Photo circle inside the ball */
+.ball-photo-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--ball-size) * 0.80);
+  height: calc(var(--ball-size) * 0.80);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.ball-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
