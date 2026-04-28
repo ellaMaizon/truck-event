@@ -64,7 +64,7 @@ export default function QRPage() {
           )}
         </div>
 
-        {/* URL display */}
+        {/* URL display
         {url && (
           <div className="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3 text-center">
             <div className="flex items-center justify-center gap-2 mb-1">
@@ -77,7 +77,7 @@ export default function QRPage() {
             </div>
             <p className="text-white text-sm font-mono break-all">{url}</p>
           </div>
-        )}
+        )} */}
 
         {/* Instructions */}
         <div className="w-full flex flex-col gap-3">

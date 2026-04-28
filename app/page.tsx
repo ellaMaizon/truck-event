@@ -98,18 +98,18 @@ export default function Home() {
     setStep("preview");
   };
 
-  const retake = async () => {
+  const retake = () => {
     URL.revokeObjectURL(previewUrl);
     setPreviewUrl("");
     setPreviewBlob(null);
-    await startCamera();
+    startCamera();
   };
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return showToast("Please enter your name.", "error");
     if (!agreed) return showToast("Please agree to the privacy policy.", "error");
-    await startCamera();
+    startCamera();
   };
 
   const handleUpload = async () => {
@@ -170,18 +170,18 @@ export default function Home() {
                 className="w-full rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 px-4 py-3 text-base outline-none focus:border-white transition-colors"
               />
             </div>
-            <label className="flex items-start gap-3 cursor-pointer group">
-              <div className="relative mt-0.5 shrink-0">
-                <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} className="sr-only" />
-                <div className={`w-5 h-5 rounded-md border transition-colors flex items-center justify-center ${agreed ? "bg-white border-white" : "bg-transparent border-zinc-600 group-hover:border-zinc-400"}`}>
-                  {agreed && (
-                    <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 12 12">
-                      <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  )}
-                </div>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <div
+                onClick={() => setAgreed(!agreed)}
+                className={`mt-0.5 w-5 h-5 rounded-md border shrink-0 flex items-center justify-center transition-colors ${agreed ? "bg-white border-white" : "bg-transparent border-zinc-600"}`}
+              >
+                {agreed && (
+                  <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 12 12">
+                    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
               </div>
-              <span className="text-zinc-400 text-sm leading-5">I agree to the collection and use of my personal information (name, photo).</span>
+              <span onClick={() => setAgreed(!agreed)} className="text-zinc-400 text-sm leading-5">I agree to the collection and use of my personal information (name, photo).</span>
             </label>
             <button type="submit" className="mt-2 w-full rounded-xl bg-white text-black font-semibold py-3.5 text-base transition-all hover:bg-zinc-200 active:scale-95">
               📷 Take a Photo
